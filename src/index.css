@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* *{
+    border: 1px solid red;
+} */
+
+.btn-primary{
+    @apply  bg-violet-600 text-white p-2 rounded text-lg font-medium
+  }
+
+    .active{
+    @apply text-violet-500 font-bold
+  }
+  
+  .default{
+    @apply text-black
+  }
+
+  

@@ -1,0 +1,24 @@
+[
+    {"id": "6238as74",
+    "logo": "../assets/Icons/accounts 1.png",
+    "name": "Account & Finance",
+    "job": "300 Jobs Available"
+    },
+    {"id": "6238as75",
+    "logo": "../assets/Icons/business 1.png",
+    "name": "Creative Design",
+    "job": "100+ Jobs Available"
+    },
+    {"id": "6238as76",
+    "logo": "../assets/Icons/social-media 1.png",
+    "name": "Marketing & Sales",
+    "job": "150 Jobs Available"
+    },
+    
+    {"id": "6238as77",
+    "logo": "../assets/Icons/chip 1.png",
+    "name": "Engineering Job",
+    "job": "224 Jobs Available"
+    }
+ 
+]
