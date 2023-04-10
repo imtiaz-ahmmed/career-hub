@@ -31,6 +31,7 @@ const Jobs = ({ job }) => {
           {salary}
         </p>
       </div>
+      <button className="btn-primary mt-4">View Details</button>
     </div>
   );
 };

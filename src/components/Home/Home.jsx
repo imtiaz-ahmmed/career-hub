@@ -6,11 +6,15 @@ import Jobs from "../Jobs/Jobs";
 const Home = () => {
   const categoryDatum = useLoaderData();
   const [jobs, setJobs] = useState([]);
+  const [seeAllJobs, setSeeAllJobs] = useState(false);
   useEffect(() => {
     fetch("job.json")
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, []);
+  const handleSeeAllJobs = () => {
+    setSeeAllJobs(true);
+  };
   return (
     <div>
       <div className="flex flex-col-reverse md:flex-row bg-indigo-50">
@@ -63,11 +67,19 @@ const Home = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 px-24 gap-4 mt-8">
-          {jobs.map((job) => (
+          {jobs.slice(0, seeAllJobs ? 6 : 4).map((job) => (
             <Jobs key={job.id} job={job}></Jobs>
           ))}
         </div>
       </section>
+
+      {!seeAllJobs && (
+        <span onClick={handleSeeAllJobs}>
+          <button className="btn-primary mb-8 mt-8 mx-auto block">
+            See All Jobs
+          </button>
+        </span>
+      )}
     </div>
   );
 };

@@ -6,7 +6,7 @@
 } */
 
 .btn-primary{
-    @apply  bg-violet-600 text-white p-2 rounded text-lg font-medium
+    @apply  bg-violet-500 text-white p-2 rounded text-lg font-medium
   }
 
     .active{
