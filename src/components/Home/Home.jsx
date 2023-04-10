@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Category from "../Category/Category";
 import { useLoaderData } from "react-router-dom";
+import Jobs from "../Jobs/Jobs";
 
 const Home = () => {
   const categoryDatum = useLoaderData();
+  const [jobs, setJobs] = useState([]);
+  useEffect(() => {
+    fetch("job.json")
+      .then((res) => res.json())
+      .then((data) => setJobs(data));
+  }, []);
   return (
     <div>
       <div className="flex flex-col-reverse md:flex-row bg-indigo-50">
@@ -21,7 +28,7 @@ const Home = () => {
         </div>
         <div className="md:w-6/12">
           <img
-            src="../../../assets/All Images/P3OLGJ1 copy 1.png"
+            src="../../../assets/All Images/profile.png"
             className="w-full h-full"
             alt=""
           />
@@ -54,6 +61,11 @@ const Home = () => {
             Explore thousands of job opportunities with all the information you
             need. Its your future
           </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 px-24 gap-4 mt-8">
+          {jobs.map((job) => (
+            <Jobs key={job.id} job={job}></Jobs>
+          ))}
         </div>
       </section>
     </div>
