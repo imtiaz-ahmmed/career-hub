@@ -8,7 +8,6 @@
 .btn-primary{
     @apply  bg-violet-500 text-white p-2 rounded text-lg font-medium
   }
-
     .active{
     @apply text-violet-500 font-bold
   }
