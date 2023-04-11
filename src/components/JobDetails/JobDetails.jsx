@@ -13,7 +13,6 @@ import { addToDb } from "../../utils/fakeDB";
 
 const JobDetails = () => {
   const handleAddToDb = (id) => {
-    console.log(id);
     addToDb(id);
   };
   const { id } = useParams();
@@ -35,7 +34,7 @@ const JobDetails = () => {
     const selectedJob = jobData.find((job) => job.id === id);
     setJob(selectedJob);
   }, []);
-  const notify = () => toast("Applied Successfully!");
+  const notify = () => toast.success("Applied Successfully!");
 
   return (
     <div>

@@ -1,6 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { getStoredJob } from "../../utils/fakeDB";
+import { useLoaderData } from "react-router-dom";
 
 const AppliedJobs = () => {
+  const [job, setJob] = useState([]);
+  const jobDatum = useLoaderData();
+
+  useEffect(() => {
+    let singleJob = [];
+    const saveJob = getStoredJob();
+    for (const id in saveJob) {
+      const foundJob = jobDatum.find((job) => job.id === id);
+      if (foundJob) {
+        singleJob.push(foundJob);
+      }
+    }
+    setJob(singleJob);
+  }, []);
+  console.log(job);
+
   return (
     <div>
       <h3
