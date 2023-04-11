@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getStoredJob } from "../../utils/fakeDB";
 import { useLoaderData } from "react-router-dom";
+import SingleJob from "../SingelJob/SingleJob";
 
 const AppliedJobs = () => {
-  const [job, setJob] = useState([]);
+  const [jobs, setJobs] = useState([]);
   const jobDatum = useLoaderData();
 
   useEffect(() => {
@@ -15,9 +16,9 @@ const AppliedJobs = () => {
         singleJob.push(foundJob);
       }
     }
-    setJob(singleJob);
+    setJobs(singleJob);
   }, []);
-  console.log(job);
+  console.log(jobs);
 
   return (
     <div>
@@ -32,6 +33,11 @@ const AppliedJobs = () => {
       >
         Applied Jobs
       </h3>
+      <div>
+        {jobs.map((job) => (
+          <SingleJob key={job.id} job={job}></SingleJob>
+        ))}
+      </div>
     </div>
   );
 };
