@@ -18,7 +18,20 @@ const AppliedJobs = () => {
     }
     setJobs(singleJob);
   }, []);
-  console.log(jobs);
+
+  const sortJobsByOnsite = () => {
+    const sortedJobs = [...jobs].sort((a, b) =>
+      a.remoteOrOnsite.localeCompare(b.remoteOrOnsite)
+    );
+    setJobs(sortedJobs);
+  };
+
+  const sortJobsByRemote = () => {
+    const sortedJobs = [...jobs].sort((a, b) =>
+      b.remoteOrOnsite.localeCompare(a.remoteOrOnsite)
+    );
+    setJobs(sortedJobs);
+  };
 
   return (
     <div>
@@ -33,7 +46,16 @@ const AppliedJobs = () => {
       >
         Applied Jobs
       </h3>
-      <div>
+      <div className="flex justify-end gap-8 mt-12 mx-24 ">
+        <button className="btn-primary" onClick={sortJobsByRemote}>
+          Sort by Remote
+        </button>
+        <button className="btn-primary" onClick={sortJobsByOnsite}>
+          Sort by On Site
+        </button>
+      </div>
+
+      <div className="mt-12">
         {jobs.map((job) => (
           <SingleJob key={job.id} job={job}></SingleJob>
         ))}

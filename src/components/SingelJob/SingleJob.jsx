@@ -12,11 +12,12 @@ const SingleJob = ({ job }) => {
     salary,
     location,
   } = job;
+
   return (
     <div className="p-12 mb-12 rounded-lg  border flex flex-col md:flex-row gap-8  justify-between  items-center mx-24">
       <div className="flex flex-col md:flex-row gap-8">
         <img
-          className="w-60 h-60 border rounded-lg bg-slate-100 p-8"
+          className=" w-60 border rounded-lg bg-slate-100 p-16"
           src={logo}
           alt=""
         />
