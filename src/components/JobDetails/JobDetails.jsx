@@ -9,8 +9,13 @@ import {
   MapPinIcon,
   PhoneIcon,
 } from "@heroicons/react/24/solid";
+import { addToDb } from "../../utils/fakeDB";
 
 const JobDetails = () => {
+  const handleAddToDb = (id) => {
+    console.log(id);
+    addToDb(id);
+  };
   const { id } = useParams();
   const jobData = useLoaderData();
   const [job, setJob] = useState({});
@@ -102,7 +107,10 @@ const JobDetails = () => {
             </p>
           </div>
           <button
-            onClick={notify}
+            onClick={() => {
+              notify();
+              handleAddToDb(id);
+            }}
             className="btn-primary block mx-auto w-full  rounded-lg "
           >
             Apply Now
