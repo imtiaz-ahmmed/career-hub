@@ -5,33 +5,28 @@ import SingleJob from "../SingelJob/SingleJob";
 
 const AppliedJobs = () => {
   const [jobs, setJobs] = useState([]);
+  const [filter, setFilter] = useState(null);
   const jobDatum = useLoaderData();
 
   useEffect(() => {
-    let singleJob = [];
-    const saveJob = getStoredJob();
-    for (const id in saveJob) {
+    let appliedJobs = [];
+    const savedJobs = getStoredJob();
+    for (const id in savedJobs) {
       const foundJob = jobDatum.find((job) => job.id === id);
       if (foundJob) {
-        singleJob.push(foundJob);
+        appliedJobs.push(foundJob);
       }
     }
-    setJobs(singleJob);
-  }, []);
+    setJobs(appliedJobs);
+  }, [jobDatum]);
 
-  const sortJobsByOnsite = () => {
-    const sortedJobs = [...jobs].sort((a, b) =>
-      a.remoteOrOnsite.localeCompare(b.remoteOrOnsite)
-    );
-    setJobs(sortedJobs);
+  const handleSort = (value) => {
+    setFilter(value);
   };
 
-  const sortJobsByRemote = () => {
-    const sortedJobs = [...jobs].sort((a, b) =>
-      b.remoteOrOnsite.localeCompare(a.remoteOrOnsite)
-    );
-    setJobs(sortedJobs);
-  };
+  const filteredJobs = filter
+    ? jobs.filter((job) => job.remoteOrOnsite === filter)
+    : jobs;
 
   return (
     <div>
@@ -47,18 +42,20 @@ const AppliedJobs = () => {
         Applied Jobs
       </h3>
       <div className="flex justify-end gap-8 mt-12 mx-24 ">
-        <button className="btn-primary" onClick={sortJobsByRemote}>
+        <button className="btn-primary" onClick={() => handleSort("Remote")}>
           Sort by Remote
         </button>
-        <button className="btn-primary" onClick={sortJobsByOnsite}>
+        <button className="btn-primary" onClick={() => handleSort("Onsite")}>
           Sort by On Site
         </button>
       </div>
 
       <div className="mt-12">
-        {jobs.map((job) => (
-          <SingleJob key={job.id} job={job}></SingleJob>
-        ))}
+        {filteredJobs.map((job) =>
+          filter === null || job.remoteOrOnsite === filter ? (
+            <SingleJob key={job.id} job={job}></SingleJob>
+          ) : null
+        )}
       </div>
     </div>
   );
