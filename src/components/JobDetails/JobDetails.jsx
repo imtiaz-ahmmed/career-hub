@@ -34,7 +34,7 @@ const JobDetails = () => {
     const selectedJob = jobData.find((job) => job.id === id);
     setJob(selectedJob);
   }, []);
-  const notify = () => toast.success("Applied Successfully!");
+  const notifySuccess = () => toast.success("Applied Successfully!");
 
   return (
     <div>
@@ -107,7 +107,7 @@ const JobDetails = () => {
           </div>
           <button
             onClick={() => {
-              notify();
+              notifySuccess();
               handleAddToDb(id);
             }}
             className="btn-primary block mx-auto w-full  rounded-lg "

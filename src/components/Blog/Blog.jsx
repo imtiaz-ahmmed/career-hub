@@ -14,7 +14,6 @@ const Blog = () => {
       >
         Blog
       </h3>
-
       <div className="border mx-24 mt-12 mb-8 p-8 bg-slate-100 text-justify rounded-lg">
         <h2 className="font-bold text-xl text-indigo-600 mb-4">
           When should you use context API?
