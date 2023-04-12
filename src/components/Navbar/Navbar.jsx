@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import Footer from "../Footer/Footer";
 
 const Navbar = () => {
   return (
@@ -35,6 +36,7 @@ const Navbar = () => {
         <button className="btn-primary">Start Applying</button>
       </div>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };

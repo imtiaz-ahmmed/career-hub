@@ -10,6 +10,7 @@ import AppliedJobs from "./components/AppliedJobs/AppliedJobs";
 import Blog from "./components/Blog/Blog";
 import JobDetails from "./components/JobDetails/JobDetails";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import Footer from "./components/Footer/Footer";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
         element: <Blog></Blog>,
       },
     ],
+  },
+  {
+    path: "/footer",
+    element: <Footer></Footer>,
   },
 ]);
 
